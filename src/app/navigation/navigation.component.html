@@ -1,0 +1,52 @@
+<nav class="Navigation">
+  <ul>
+    <!--  queries.categoryOpeningStatus$ には以下のようなデータが入ってきます。  -->
+    <!--
+     [
+      {
+        "categoryId": 1,
+        "categoryLabel": "category 1",
+        "isOpening": false
+      },
+      {
+        "categoryId": 2,
+        "categoryLabel": "category 2",
+        "isOpening": false
+      },
+      {
+        "categoryId": 3,
+        "categoryLabel": "category 3",
+        "isOpening": false
+      },
+      {
+        "categoryId": 4,
+        "categoryLabel": "category 4",
+        "isOpening": false
+      }
+    ]
+    -->
+    <ng-container
+      *ngFor="let category of queries.categoryOpeningStatus$ | async"
+    >
+      <li class="Navigation_Category">
+        <!--  ①カテゴリーをクリックすると「onClickCategory()」が呼ばれる  -->
+        <div
+          class="Navigation_CategoryTitle"
+          (click)="onClickCategory(category.categoryId)"
+        >
+          {{ category.categoryLabel }}
+        </div>
+        <!--  ②「onClickCategory()」でcategory.isOpeningの値（boolean）が切り替わる  -->
+        <ul
+          class="Navigation_CategoryItems"
+          [class.Navigation_CategoryItems-hidden]="!category.isOpening"
+        >
+          <li Class="Navigation_CategoryItem">
+            <!-- サンプルなので未実装 -->
+            Item
+          </li>
+        </ul>
+      </li>
+    </ng-container>
+  </ul>
+</nav>
