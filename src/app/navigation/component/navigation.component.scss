@@ -1,0 +1,32 @@
+.Navigation {
+  width: 200px;
+}
+
+.Navigation_CategoryTitle {
+  padding: 10px;
+  background-color: oldlace;
+  color: black;
+  font-weight: bold;
+}
+
+.Navigation_CategoryItem {
+  padding: 10px 10px 10px 30px;
+  background-color: oldlace;
+  color: black;
+}
+
+.Navigation_CategoryItems {
+  visibility: visible;
+  opacity: 1;
+  max-height: 4000px; // 値にautoを指定するとうまくアニメーションしないため、heightではなくmax-heightを指定している。
+  transition: visibility 500ms, opacity 500ms, max-height 500ms;
+  transition-timing-function: ease-in-out;
+}
+
+.Navigation_CategoryItems.Navigation_CategoryItems-hidden {
+  max-height: 1px;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 275ms, opacity 275ms, max-height 280ms;
+  transition-timing-function: ease-out;
+}

@@ -1,0 +1,28 @@
+<nav class="Navigation">
+  <ul>
+    <ng-container
+      *ngFor="
+        let category of queries.categoryOpeningStatus$ | async;
+        trackBy: trackByViewModels
+      "
+    >
+      <li class="Navigation_Category">
+        <div
+          class="Navigation_CategoryTitle"
+          (click)="onClickCategory(category.categoryId)"
+        >
+          {{ category.categoryLabel }}
+        </div>
+        <ul
+          class="Navigation_CategoryItems"
+          [class.Navigation_CategoryItems-hidden]="!category.isOpening"
+        >
+          <li Class="Navigation_CategoryItem">
+            <!-- サンプルなので未実装 -->
+            Item
+          </li>
+        </ul>
+      </li>
+    </ng-container>
+  </ul>
+</nav>
